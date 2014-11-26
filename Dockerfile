@@ -1,7 +1,9 @@
 FROM ubuntu
 MAINTAINER Grégoire Audoux <projects@gregoire-audoux.fr>
 
-ADD btsync/btsync btsync
+RUN apt-get update && apt-get install curl -y
+RUN curl http://download.getsyncapp.com/endpoint/btsync/os/linux-x64/track/stable > btsync.tgz
+RUN tar -xf btsync.tgz
 
 VOLUME ["/data"]
 EXPOSE 8888
